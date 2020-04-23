@@ -349,3 +349,15 @@ E_KAKAOTALK_NOT_INSTALLED;
 - `npm run start`
 - `npm run ios` or `npm run android`로 앱 실행
 - ios의 경우 `ios`폴더에서 `pod install`을 먼저 실행해 주세요 (충돌시 `lock파일` 삭제 후 설치)
+
+## Troubleshooting
+
+###In case of fail in autolinking:
+  This error happens when you install the the module and hope the module is auto linked, because your react-native version is **greater** than **0.60**. But the autolinking fails and the you will likely get the following error: 
+```
+Type error, null is not object. RNKakaoLogins.login is not defined
+```
+In this case, add the following line into your podfile: 
+```
+  pod 'kakao-login', :path => '../node_modules/@react-native-seoul/kakao-login'
+```
